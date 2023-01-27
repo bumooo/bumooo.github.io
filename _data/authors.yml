@@ -6,6 +6,10 @@
 #   url: {homepage_of_author}
 # -------------------------------------
 
+bumoo:
+  name: bumoo
+  url: https://github.com/bumooo
+
 cotes:
   name: Cotes Chung
   twitter: cotes2020
