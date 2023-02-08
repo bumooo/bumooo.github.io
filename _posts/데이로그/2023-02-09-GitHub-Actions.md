@@ -66,22 +66,25 @@ Repository에 `.github/workflows'에 YAML 파일로 저장한다.
 
 1. Repository에 `.github/workflows` 디렉토리 생성한다.
 2. `.github/workflows` 디렉토리 안에 `learn-github-actions.yml` 파일 생성하고, 아래 코드 작성한다.
-```YAML
-name: learn-github-actions # GitHub Repository의 Action에 표시되는 Workflow의 이름
-run-name: ${{ github.actor }} is learning GitHub Actions # Workflow를 실행한 사용자 이름을 표시
-on: [push] # Workflow의 Trigger 지정
-jobs: # Workflow에서 실행되는 모든 Job을 그룹화
-    check-bats-version: # 'check-bats-verions'이라는 Job을 정의
-        runs-on: ubuntu-latest # Runner의 버전을 작성
-        steps: # Job의 모든 Step을 그룹
-            - uses: actions/checkout@v3 # 'actions/checkout@v3'를 이용하여 checkout하고 Runner에 다운로드하여 작업을 실행
-            - uses: actions/setup-node@v3 # 'actions/setup-node@v3'를 이용하여 Node.js 을 설치
-                with: # action에 값을 전달
-                    node-versions: '14' # 설치하는 Node.js의 버전 14 설정
-            - run: npm install -g bats # 'npm'을 사용하여 'bats'를 설치
-            - run: bats -v # 'bats'의 버전을 확인
-```
+    ```yaml
+    name: learn-github-actions # GitHub Repository의 Action에 표시되는 Workflow의 이름
+    run-name: ${{ github.actor }} is learning GitHub Actions # Workflow를 실행한 사용자 이름을 표시
+    on: [push] # Workflow의 Trigger 지정
+    jobs: # Workflow에서 실행되는 모든 Job을 그룹화
+        check-bats-version: # 'check-bats-verions'이라는 Job을 정의
+            runs-on: ubuntu-latest # Runner의 버전을 작성
+            steps: # Job의 모든 Step을 그룹
+                - uses: actions/checkout@v3 # 'actions/checkout@v3'를 이용하여 checkout하고 Runner에 다운로드하여 작업을 실행
+                - uses: actions/setup-node@v3 # 'actions/setup-node@v3'를 이용하여 Node.js 을 설치
+                    with: # action에 값을 전달
+                        node-versions: '14' # 설치하는 Node.js의 버전 14 설정
+                - run: npm install -g bats # 'npm'을 사용하여 'bats'를 설치
+                - run: bats -v # 'bats'의 버전을 확인
+    ```
 3. 변경 내용을 Commit 후 Repository에 Push 한다.
+
+> `- uses` : 누군가 만들어 놓은 명령어를 찾아 실행<br>
+> `- run` : Runner에 커맨드 명령어 실행
 
 ## 참조
 - [GitHub Docs](https://docs.github.com/ko/actions/learn-github-actions/understanding-github-actions)
