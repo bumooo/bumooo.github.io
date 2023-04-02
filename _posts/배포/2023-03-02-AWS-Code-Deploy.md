@@ -2,7 +2,7 @@
 title: "Github Action 자동 배포하기 - 1"
 author: bumoo
 date: 2023-03-02 19:28:00 +0900
-categories: [AWS]
+categories: [배포]
 tags: [AWS EC2, CodeDeploy]
 ---
 
