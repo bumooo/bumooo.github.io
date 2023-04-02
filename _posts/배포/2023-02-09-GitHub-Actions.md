@@ -2,7 +2,7 @@
 title: "GitHub Actions 이해하기"
 author: bumoo
 date: 2023-02-09 00:12:00 +0900
-categories: [프로젝트, 데이로그]
+categories: [배포]
 tags: [Github Actions]
 ---
 
