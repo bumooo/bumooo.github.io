@@ -119,7 +119,7 @@ AppSpec 파일의 hooks에서 실행할 스크립트를 작성한다.
 #!/usr/bin/env bash
 
 PROJECT_ROOT="/home/ubuntu/app"
-JAR_FILE="$PROJECT_ROOT/{build한 jar 파일명}"
+JAR_FILE="$PROJECT_ROOT/spring-webapp.jar"
 
 DEPLOY_LOG="$PROJECT_ROOT/deploy.log"
 
@@ -144,7 +144,7 @@ fi
 #!/usr/bin/env bash
 
 PROJECT_ROOT="/home/ubuntu/app"
-JAR_FILE="$PROJECT_ROOT/{build한 jar 파일명}"
+JAR_FILE="$PROJECT_ROOT/spring-webapp.jar"
 
 APP_LOG="$PROJECT_ROOT/application.log"
 ERROR_LOG="$PROJECT_ROOT/error.log"
@@ -163,6 +163,14 @@ nohup java -jar $JAR_FILE > $APP_LOG 2> $ERROR_LOG &
 CURRENT_PID=$(pgrep -f $JAR_FILE)
 echo "$TIME_NOW > 실행된 프로세스 아이디 $CURRENT_PID 입니다." >> $DEPLOY_LOG
 ```
+
+> `start.sh`에서 `cp $PROJECT_ROOT/build/libs/*.jar $JAR_FILE`를 통해 `모든 jar 파일`을 복사하므로 `build.gradle`에 내용을 추가한다. 
+```gradle
+jar {
+  enabled = false
+}
+```
+{: .prompt-info }
 
 ## Github Actions Workflow 작성
 
@@ -244,7 +252,7 @@ jobs:
 >   - AWS EC2의 `/home/ubuntu`에서 `mkdir app` 실행해서 app 디렉토리 생성<br>
 > - AWS EC2에 Java가 설치되어 있어야한다.
 >   - `sudo apt-get install openjdk-{version}-jdk`으로 설치 후 `java -version` 설치 확인
-{: .prompt-tip }
+{: .prompt-warning }
 
 ## 배포하기
 
