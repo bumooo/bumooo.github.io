@@ -36,7 +36,7 @@ sudo mysql -u root -p
 `password`를 설정하지 않았다면, 설정해줘야 한다.
 
 ```sql
-ALTER USER 'root'@'localhost' IDENTIFIED BY 'NEW_USER_PASSWORD';
+ALTER USER 'root'@'localhost' IDENTIFIED BY '{패스워드}';
 FLUSH PRIVILEGES;
 ```
 
@@ -44,7 +44,7 @@ FLUSH PRIVILEGES;
 
 1. DataBase를 추가
 ```sql
-create database {데이터베이스명};
+create database {DB명};
 ```
 
 2. 사용자 계정 추가
@@ -54,7 +54,7 @@ create user '{사용자 계정명}'@'%' identified by '{패스워드}';
 
 3. 새 계정에 데이터베이스 권한 부여
 ```sql
-grant all on {데이터베이스명}.*@ 새 '{사용자 계정명}'@'%' with grant option;
+grant all on {DB명}.*@ to '{사용자 계정명}'@'%' with grant option;
 FLUSH PRIVILEGES;
 ```
 
